@@ -15,15 +15,17 @@ echo "🚀 Installing Jihad Ultimate v7..."
 # Create necessary directories
 mkdir -p /etc/jihad
 mkdir -p /etc/jihad/dnstt
+mkdir -p /root/udp
 
-# Copy files
+# Move UDP-Custom binaries (copied from the original project)
+if [ -d "udp" ]; then
+    cp udp/* /root/udp/
+    chmod +x /root/udp/*
+fi
+
+# Move menu to /usr/local/bin
 cp menu.sh /usr/local/bin/jihad
 chmod +x /usr/local/bin/jihad
-
-# Move UDP-Custom binaries
-mkdir -p /root/udp
-cp udp/* /root/udp/
-chmod +x /root/udp/*
 
 # Setup initial status
 echo "jihad" > /etc/jihad/.status
